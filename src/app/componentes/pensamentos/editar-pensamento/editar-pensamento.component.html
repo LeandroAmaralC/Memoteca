@@ -1,6 +1,6 @@
 <section class="container editar-pensamentos ff-inter">
   <header class="header">
-      <h2>Adicione um <br> pensamento novo:</h2>
+        <h2>Adicione um <br> pensamento novo:</h2>
   </header>
   <form  [formGroup]="editarFormulario">
     <label for="pensamento">Pensamento</label>
@@ -35,7 +35,7 @@
       <div class="radio-modelo">
         <label for="modelo1">
           <input type="radio"
-                 formControlName="modelo-card"
+                 formControlName="modelo"
                  id="modelo1"
                  value="modelo1"
 
@@ -48,15 +48,15 @@
         Prévia:
         <div class="modelo modelo1 ff-roboto-mono">
           <img src="../../../../assets/Imagens/modelo1.png" alt="Aspas azuis">
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
-          <p class="conteudo"> <b> {{ pensamento.autoria }}</b></p>
+          <p class="conteudo">{{ editarFormulario.get('conteudo')?.value }}</p>
+          <p class="conteudo"> <b> {{ editarFormulario.get('autoria')?.value }}</b></p>
         </div>
       </div>
 
       <div class="radio-modelo">
         <label for="modelo2">
           <input type="radio"
-                 formControlName="modelo-card"
+                 formControlName="modelo"
                  id="modelo2"
                  value="modelo2"
 
@@ -70,15 +70,15 @@
         <div class="modelo modelo2 ff-roboto-mono">
           <img src="assets/Imagens/modelo2.png" alt="Aspas azuis claro">
 
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
-          <p class="conteudo"> <b>{{ pensamento.autoria}}</b></p>
+          <p class="conteudo">{{ editarFormulario.get('conteudo')?.value }}</p>
+          <p class="conteudo"> <b> {{ editarFormulario.get('autoria')?.value }}</b></p>
         </div>
       </div>
 
       <div class="radio-modelo">
         <label for="modelo3">
           <input type="radio"
-                 formControlName="modelo-card"
+                 formControlName="modelo"
                  id="modelo3"
                  value="modelo3"
 
@@ -92,8 +92,8 @@
         <div class="modelo modelo3 ff-roboto-mono" >
           <img src="assets/Imagens/modelo3.png" alt="Aspas verdes">
 
-          <p class="conteudo">{{ pensamento.conteudo }}</p>
-          <p class="conteudo"> <b> {{ pensamento.autoria}} </b></p>
+          <p class="conteudo">{{ editarFormulario.get('conteudo')?.value }}</p>
+          <p class="conteudo"> <b> {{ editarFormulario.get('autoria')?.value }}</b></p>
         </div>
       </div>
 
@@ -109,5 +109,3 @@
     </div>
 
 
-  </form>
-</section>
