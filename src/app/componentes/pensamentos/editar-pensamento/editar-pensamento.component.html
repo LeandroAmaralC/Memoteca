@@ -2,34 +2,43 @@
   <header class="header">
       <h2>Adicione um <br> pensamento novo:</h2>
   </header>
-  <form action="">
+  <form  [formGroup]="editarFormulario">
     <label for="pensamento">Pensamento</label>
     <input type="textarea"
            class="input"
            id="pensamento"
-           name="pensamento"
+           formControlName="conteudo"
            placeholder="Digite o pensamento"
-           [(ngModel)]="pensamento.conteudo"
            >
+
+           <div class="mensagem__erro"  *ngIf="editarFormulario.get('conteudo')?.errors  && editarFormulario.get('conteudo')?.touched">
+            Pensamento é obrigatório!
+           </div>
 
     <label for="autoria">Autoria ou fonte</label>
     <input type="textarea"
            class="input"
            id="autoria"
-           name="autoria"
+           formControlName="autoria"
            placeholder="Digite a autoria ou fonte"
-           [(ngModel)]="pensamento.autoria"
            >
+
+           <div class="mensagem__erro"  *ngIf="editarFormulario.get('autoria')?.errors?.['required'] && editarFormulario.get('autoria')?.touched">
+            Autoria é obrigatório!
+           </div>
+           <div class="mensagem__erro"  *ngIf="editarFormulario.get('autoria')?.errors?.['minlength']  && editarFormulario.get('autoria')?.touched">
+            Autoria precisa ter no minimo três caracteries!
+           </div>
 
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
         <label for="modelo1">
           <input type="radio"
-                 name="modelo-card"
+                 formControlName="modelo-card"
                  id="modelo1"
                  value="modelo1"
-                 [(ngModel)]="pensamento.modelo"
+
                  >
                  <div class="custom-radio">
                   <span></span>
@@ -47,10 +56,10 @@
       <div class="radio-modelo">
         <label for="modelo2">
           <input type="radio"
-                 name="modelo-card"
+                 formControlName="modelo-card"
                  id="modelo2"
                  value="modelo2"
-                 [(ngModel)]="pensamento.modelo"
+
                  >
                  <div class="custom-radio">
                   <span></span>
@@ -69,10 +78,10 @@
       <div class="radio-modelo">
         <label for="modelo3">
           <input type="radio"
-                 name="modelo-card"
+                 formControlName="modelo-card"
                  id="modelo3"
                  value="modelo3"
-                 [(ngModel)]="pensamento.modelo"
+
                  >
                  <div class="custom-radio">
                   <span></span>
@@ -89,7 +98,11 @@
       </div>
 
       <div class="acoes">
-        <button (click)="editarPensamento()" class="botao">Salvar</button>
+        <button
+         (click)="editarPensamento()"
+          [disabled]="!editarFormulario.valid"
+          [ngClass]="habilitarBotao()"
+        >Salvar</button>
         <button (click)="cancelarPensamento()" class="botao">Cancelar</button>
       </div>
 
