@@ -5,14 +5,14 @@
       "conteudo": "Eu estou aqui",
       "autoria": "Leandro",
       "modelo": "modelo1",
-      "favorito": false
+      "favorito": true
     },
     {
       "id": 2,
       "conteudo": "Estudando Angular",
       "autoria": "Dev Alura",
       "modelo": "modelo2",
-      "favorito": false
+      "favorito": true
     },
     {
       "id": 3,
